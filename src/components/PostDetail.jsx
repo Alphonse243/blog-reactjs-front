@@ -43,27 +43,39 @@ const PostDetail = () => {
   ]);
 
   return (
-    <div className="post-detail-container">
-      <div className="post-hero" style={{ backgroundImage: `url(${post.image})` }}>
-        <div className="overlay">
-          <div className="container">
-            <span className="category-badge">{post.category}</span>
-            <h1 className="post-title">{post.title}</h1>
-            <div className="post-meta">
-              <div className="author">
-                <FaUser className="icon" />
-                <span>{post.author}</span>
-              </div>
-              <div className="date">
-                <FaRegClock className="icon" />
-                <span>{post.date}</span>
+    <div>
+      <div className="position-relative">
+        <div 
+          className="bg-dark position-relative"
+          style={{
+            height: '60vh',
+            backgroundImage: `url(${post.image})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+          }}
+        >
+          <div className="position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-50">
+            <div className="container h-100 d-flex align-items-end pb-5">
+              <div className="text-white">
+                <span className="badge bg-primary">{post.category}</span>
+                <h1 className="display-4">{post.title}</h1>
+                <div className="d-flex align-items-center mt-3">
+                  <div className="me-3">
+                    <FaUser className="me-1" />
+                    <span>{post.author}</span>
+                  </div>
+                  <div>
+                    <FaRegClock className="me-1" />
+                    <span>{post.date}</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="container">
+      <div className="container my-5">
         <div className="row justify-content-center">
           <div className="col-lg-8">
             <article className="post-content">
@@ -72,17 +84,17 @@ const PostDetail = () => {
               ))}
             </article>
 
-            <div className="post-actions">
-              <button className="action-btn">
-                <FaRegHeart className="icon" />
+            <div className="post-actions d-flex justify-content-between mt-4">
+              <button className="btn btn-outline-primary">
+                <FaRegHeart className="me-2" />
                 <span>{post.likes} J'aime</span>
               </button>
-              <button className="action-btn">
-                <FaRegComment className="icon" />
+              <button className="btn btn-outline-secondary">
+                <FaRegComment className="me-2" />
                 <span>{post.comments.length} Commentaires</span>
               </button>
-              <button className="action-btn">
-                <FaShare className="icon" />
+              <button className="btn btn-outline-success">
+                <FaShare className="me-2" />
                 <span>Partager</span>
               </button>
             </div>
@@ -95,12 +107,14 @@ const PostDetail = () => {
         <div className="row">
           {relatedPosts.map(post => (
             <div key={post.id} className="col-md-4 mb-4">
-              <Link to={`/post/${post.id}`} className="related-post-card">
-                <div className="post-image-wrapper">
-                  <img src={post.image} alt={post.title} />
-                  <div className="category-badge">{post.category}</div>
+              <Link to={`/post/${post.id}`} className="card">
+                <div className="card-img-top position-relative">
+                  <img src={post.image} alt={post.title} className="img-fluid" />
+                  <div className="badge bg-secondary position-absolute top-0 start-0 m-2">{post.category}</div>
                 </div>
-                <h4>{post.title}</h4>
+                <div className="card-body">
+                  <h5 className="card-title">{post.title}</h5>
+                </div>
               </Link>
             </div>
           ))}

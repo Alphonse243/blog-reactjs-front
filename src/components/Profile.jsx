@@ -58,61 +58,44 @@ const Profile = () => {
   };
 
   return (
-    <div className="profile-container">
-      <div className="profile-header">
-        <div className="profile-cover">
-          <img src="https://picsum.photos/id/1039/1920/400" alt="cover" className="cover-image" />
-        </div>
-        <div className="container position-relative">
-          <div className="profile-info-wrapper">
-            <div className="row">
-              <div className="col-lg-3">
-                <div className="avatar-container">
-                  <img src={userProfile.avatar} alt="Profile" className="profile-avatar" />
-                  <button className="edit-avatar-btn btn btn-primary btn-sm">
-                    <FaEdit />
-                  </button>
-                </div>
-              </div>
-              <div className="col-lg-9">
-                <div className="profile-info">
-                  <div className="d-flex justify-content-between align-items-center mb-3">
-                    <h1 className="profile-name">{userProfile.name}</h1>
-                    <button className="btn btn-outline-light">
-                      <FaEdit className="me-2" />
-                      Éditer le profil
-                    </button>
-                  </div>
-                  <p className="profile-bio mb-3">{userProfile.bio}</p>
-                  <div className="profile-details">
-                    <span><FaMapMarkerAlt /> Paris, France</span>
-                    <span><FaGlobe /> www.website.com</span>
-                  </div>
-                  <div className="profile-social mt-3">
-                    <a href="#" className="btn btn-outline-light btn-sm me-2">
-                      <FaTwitter className="me-1" /> Twitter
-                    </a>
-                    <a href="#" className="btn btn-outline-light btn-sm">
-                      <FaLinkedin className="me-1" /> LinkedIn
-                    </a>
-                  </div>
-                </div>
+    <div className="bg-light">
+      <div className="bg-primary bg-gradient text-white py-5">
+        <div className="container">
+          <div className="row align-items-center">
+            <div className="col-lg-3 text-center">
+              <div className="position-relative d-inline-block">
+                <img 
+                  src={userProfile.avatar} 
+                  alt="Profile" 
+                  className="rounded-circle border border-4 border-white shadow-sm"
+                  style={{ width: '150px', height: '150px', objectFit: 'cover' }}
+                />
+                <button className="btn btn-primary btn-sm position-absolute bottom-0 end-0 rounded-circle p-2">
+                  <FaEdit />
+                </button>
               </div>
             </div>
-          </div>
-
-          <div className="profile-stats">
-            <div className="stat-item">
-              <span className="stat-value">{userProfile.stats.posts}</span>
-              <span className="stat-label">Articles</span>
-            </div>
-            <div className="stat-item">
-              <span className="stat-value">{userProfile.stats.followers}</span>
-              <span className="stat-label">Abonnés</span>
-            </div>
-            <div className="stat-item">
-              <span className="stat-value">{userProfile.stats.following}</span>
-              <span className="stat-label">Abonnements</span>
+            <div className="col-lg-9 mt-4 mt-lg-0">
+              <div className="d-flex justify-content-between align-items-center mb-3">
+                <h1 className="profile-name">{userProfile.name}</h1>
+                <button className="btn btn-outline-light">
+                  <FaEdit className="me-2" />
+                  Éditer le profil
+                </button>
+              </div>
+              <p className="profile-bio mb-3">{userProfile.bio}</p>
+              <div className="profile-details">
+                <span><FaMapMarkerAlt /> Paris, France</span>
+                <span><FaGlobe /> www.website.com</span>
+              </div>
+              <div className="profile-social mt-3">
+                <a href="#" className="btn btn-outline-light btn-sm me-2">
+                  <FaTwitter className="me-1" /> Twitter
+                </a>
+                <a href="#" className="btn btn-outline-light btn-sm">
+                  <FaLinkedin className="me-1" /> LinkedIn
+                </a>
+              </div>
             </div>
           </div>
         </div>

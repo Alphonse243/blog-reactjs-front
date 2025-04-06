@@ -24,25 +24,19 @@ const CategoryPage = () => {
   }, [category]);
 
   return (
-    <div className="category-page">
-      <div className="category-hero">
-        <div className="container">
-          <h1 className="display-4 text-center text-white mb-4">{category}</h1>
-          <div className="row justify-content-center">
-            <div className="col-md-8">
-              <p className="lead text-center text-white mb-0">
-                Explorez nos articles sur {category}
-              </p>
-            </div>
-          </div>
+    <div className="bg-light">
+      <div className="bg-primary bg-gradient py-5 mb-4">
+        <div className="container text-center text-white">
+          <h1 className="display-4 mb-2">{category}</h1>
+          <p className="lead mb-0">Explorez nos articles sur {category}</p>
         </div>
       </div>
 
-      <div className="container mt-5">
+      <div className="container py-4">
         <div className="row g-4">
           {posts.map((post) => (
-            <div key={post.id} className="col-12 col-md-6">
-              <article className="category-card">
+            <div key={post.id} className="col-md-6">
+              <div className="card h-100 border-0 shadow-sm">
                 <Link to={`/post/${post.id}`} className="card-link">
                   <div className="row g-0">
                     <div className="col-md-5">
@@ -72,7 +66,7 @@ const CategoryPage = () => {
                     </div>
                   </div>
                 </Link>
-              </article>
+              </div>
             </div>
           ))}
         </div>
