@@ -11,11 +11,12 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  const categories = [
-    { name: 'Actualités', path: '/actualites' },
-    { name: 'Technologie', path: '/actualites/technologie' },
-    { name: 'Sport', path: '/actualites/sport' },
-    { name: 'Culture', path: '/actualites/culture' }
+  const menuItems = [
+    { name: 'Accueil', path: '/', icon: 'FaHome' },
+    { name: 'Actualités', path: '/actualites', icon: 'FaNewspaper' },
+    { name: 'Recherche', path: '/search', icon: 'FaSearch' },
+    { name: 'Contact', path: '/contact', icon: 'FaEnvelope' },
+    { name: 'À propos', path: '/about', icon: 'FaInfoCircle' }
   ];
 
   useEffect(() => {
@@ -29,6 +30,11 @@ const Navbar = () => {
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
     document.body.style.overflow = !isMobileMenuOpen ? 'hidden' : '';
+  };
+
+  const closeMenu = () => {
+    setIsMobileMenuOpen(false);
+    document.body.style.overflow = '';
   };
 
   const handleLogout = () => {
@@ -71,18 +77,34 @@ const Navbar = () => {
             className="navbar-toggler border-0" 
             type="button" 
             onClick={toggleMobileMenu}
+            aria-label="Toggle navigation"
           >
             {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
           </button>
           
           <div className={`navbar-collapse ${isMobileMenuOpen ? 'show' : ''}`}>
+            <div className="mobile-header d-lg-none">
+              <div className="d-flex justify-content-between align-items-center p-3">
+                <h5 className="mb-0">Menu</h5>
+                <button 
+                  className="btn-close" 
+                  onClick={closeMenu}
+                  aria-label="Close menu"
+                />
+              </div>
+              <hr className="my-0" />
+            </div>
+
             <ul className="navbar-nav me-auto">
-              <li className="nav-item">
-                <Link className="nav-link fw-bold" to="/">Accueil</Link>
-              </li>
-              {categories.map((cat) => (
-                <li key={cat.path} className="nav-item">
-                  <Link className="nav-link" to={cat.path}>{cat.name}</Link>
+              {menuItems.map((item) => (
+                <li key={item.path} className="nav-item">
+                  <Link 
+                    to={item.path} 
+                    className="nav-link" 
+                    onClick={() => closeMenu()}
+                  >
+                    {item.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -119,7 +141,7 @@ const Navbar = () => {
 
       <div 
         className={`mobile-overlay ${isMobileMenuOpen ? 'show' : ''}`}
-        onClick={toggleMobileMenu}
+        onClick={closeMenu}
       />
     </div>
   );

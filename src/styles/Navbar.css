@@ -62,47 +62,89 @@
     top: 0;
     left: -100%;
     height: 100vh;
-    width: 80%;
-    max-width: 300px;
+    width: 85%;
+    max-width: 320px;
     background: white;
-    transition: left 0.3s ease;
-    padding: 2rem;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    transition: all 0.3s ease-in-out;
+    padding: 0;
+    z-index: 1050;
+    overflow-y: auto;
   }
 
   .navbar-collapse.show {
     left: 0;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  }
+
+  .mobile-header {
+    background: #f8f9fa;
   }
 
   .navbar-nav {
-    margin-top: 2rem;
+    padding: 1rem;
   }
 
-  .nav-link::after {
+  .nav-item {
+    margin-bottom: 0.5rem;
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: slideIn 0.3s ease forwards;
+  }
+
+  .nav-link {
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+
+  .nav-link:hover {
+    background-color: #f8f9fa;
+  }
+
+  .navbar-toggler {
+    padding: 0.5rem;
+    font-size: 1.25rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+  }
+
+  .navbar-toggler:hover {
+    background-color: #f8f9fa;
+  }
+
+  .mobile-overlay {
     display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(4px);
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
   }
 
-  .dropdown-menu {
-    border: none;
-    background: #f8f9fa;
-    padding-left: 1rem;
+  .mobile-overlay.show {
+    display: block;
+    opacity: 1;
   }
+
+  .navbar-collapse.show .nav-item {
+    animation-play-state: running;
+  }
+
+  .nav-item:nth-child(1) { animation-delay: 0.1s; }
+  .nav-item:nth-child(2) { animation-delay: 0.2s; }
+  .nav-item:nth-child(3) { animation-delay: 0.3s; }
+  .nav-item:nth-child(4) { animation-delay: 0.4s; }
+  .nav-item:nth-child(5) { animation-delay: 0.5s; }
 }
 
-.mobile-overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.5);
-  z-index: 999;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.mobile-overlay.show {
-  display: block;
-  opacity: 1;
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
