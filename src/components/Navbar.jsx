@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom'; // Ajout de useNavigate
 import { isAuthenticated, logout } from '../services/auth';
-import { FaSearch, FaUserCircle, FaBars, FaTimes, FaCog, FaSignOutAlt } from 'react-icons/fa';
+import { FaSearch, FaUserCircle, FaBars, FaTimes, FaCog, FaSignOutAlt, FaMoon, FaSun } from 'react-icons/fa';
+import { useTheme } from '../contexts/ThemeContext';
 import '../styles/Navbar.css';
 
 /**
@@ -10,6 +11,7 @@ import '../styles/Navbar.css';
  */
 const Navbar = () => {
   const navigate = useNavigate(); // Initialisation du hook
+  const { darkMode, toggleDarkMode } = useTheme();
 
   // État pour la gestion du menu mobile et de la recherche
   const [showSearch, setShowSearch] = useState(false);
@@ -73,7 +75,14 @@ const Navbar = () => {
               <h1 className="h4 m-0">MonBlog</h1>
             </Link>
           </div>
-          <div className="d-flex align-items-center">
+          <div className="d-flex align-items-center gap-3">
+            <button 
+              className="btn btn-link text-white p-0" 
+              onClick={toggleDarkMode}
+              aria-label="Toggle dark mode"
+            >
+              {darkMode ? <FaSun /> : <FaMoon />}
+            </button>
             {isAuthenticated() ? (
               <div className="dropdown">
                 <button 

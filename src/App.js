@@ -14,6 +14,7 @@ import Profile from './components/Profile';
 import Dashboard from './components/Dashboard';
 import { isAuthenticated } from './services/auth';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { ThemeProvider } from './contexts/ThemeContext';
 
 /**
  * Fonction pour charger les scripts Bootstrap dynamiquement
@@ -45,31 +46,33 @@ const App = () => {
 
   // Définition des routes de l'application
   return (
-    <BrowserRouter>
-      <Navbar />
-      <Routes>
-        {/* Route de la page d'accueil */}
-        <Route path="/" element={<Home />} />
-        
-        {/* Routes d'authentification */}
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        
-        {/* Routes de contenu */}
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/post/:id" element={<PostDetail />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        
-        {/* Routes des catégories */}
-        <Route path="/actualites" element={<CategoryPage />}>
-          <Route path=":category" element={<CategoryPage />} />
-        </Route>
-        
-        {/* Page 404 pour les routes non trouvées */}
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-      <Footer />
-    </BrowserRouter>
+    <ThemeProvider>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          {/* Route de la page d'accueil */}
+          <Route path="/" element={<Home />} />
+          
+          {/* Routes d'authentification */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          
+          {/* Routes de contenu */}
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/post/:id" element={<PostDetail />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          
+          {/* Routes des catégories */}
+          <Route path="/actualites" element={<CategoryPage />}>
+            <Route path=":category" element={<CategoryPage />} />
+          </Route>
+          
+          {/* Page 404 pour les routes non trouvées */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </ThemeProvider>
   );
 };
 
