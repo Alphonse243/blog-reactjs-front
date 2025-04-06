@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; // Ajout de useNavigate
 import { isAuthenticated, logout } from '../services/auth';
-import { useNavigate } from 'react-router-dom';
 import { FaSearch, FaUserCircle, FaBars, FaTimes, FaCog, FaSignOutAlt } from 'react-icons/fa';
 import '../styles/Navbar.css';
 
@@ -10,6 +9,8 @@ import '../styles/Navbar.css';
  * Gère la navigation, le menu mobile et la recherche
  */
 const Navbar = () => {
+  const navigate = useNavigate(); // Initialisation du hook
+
   // État pour la gestion du menu mobile et de la recherche
   const [showSearch, setShowSearch] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

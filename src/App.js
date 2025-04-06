@@ -11,6 +11,7 @@ import CategoryPage from './components/CategoryPage';
 import Register from './components/Register';
 import NotFound from './components/NotFound';
 import Profile from './components/Profile';
+import Dashboard from './components/Dashboard';
 import { isAuthenticated } from './services/auth';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -57,7 +58,7 @@ const App = () => {
         {/* Routes de contenu */}
         <Route path="/profile" element={<Profile />} />
         <Route path="/post/:id" element={<PostDetail />} />
-        <Route path="/dashboard" element={<div>Page Dashboard</div>} />
+        <Route path="/dashboard" element={<Dashboard />} />
         
         {/* Routes des catégories */}
         <Route path="/actualites" element={<CategoryPage />}>
