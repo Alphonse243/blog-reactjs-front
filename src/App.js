@@ -6,11 +6,22 @@ import Navbar from './components/Navbar';
 import { isAuthenticated } from './services/auth';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+// Ajout des scripts Bootstrap
+const loadBootstrapScripts = () => {
+  const script = document.createElement('script');
+  script.src = 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js';
+  document.body.appendChild(script);
+};
+
 const ProtectedRoute = () => {
   return isAuthenticated() ? <Outlet /> : <Navigate to="/login" />;
 };
 
 const App = () => {
+  React.useEffect(() => {
+    loadBootstrapScripts();
+  }, []);
+
   return (
     <BrowserRouter>
       <Navbar />
