@@ -1,12 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { isAuthenticated, logout } from '../services/auth';
 import { useNavigate } from 'react-router-dom';
-import { FaSearch, FaUserCircle, FaBars } from 'react-icons/fa';
+import { FaSearch, FaUserCircle, FaBars, FaTimes } from 'react-icons/fa';
+import '../styles/Navbar.css';
 
 const Navbar = () => {
   const navigate = useNavigate();
   const [showSearch, setShowSearch] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+    document.body.style.overflow = !isMobileMenuOpen ? 'hidden' : '';
+  };
 
   const handleLogout = () => {
     logout();
@@ -14,8 +30,8 @@ const Navbar = () => {
   };
 
   return (
-    <>
-      <div className="bg-black text-white py-1">
+    <div className="navbar-container">
+      <div className={`bg-black text-white py-1 top-nav ${scrolled ? 'shadow' : ''}`}>
         <div className="container d-flex justify-content-between align-items-center">
           <div className="d-flex align-items-center">
             <Link to="/" className="text-white text-decoration-none">
@@ -44,11 +60,15 @@ const Navbar = () => {
 
       <nav className="navbar navbar-expand-lg navbar-light bg-white border-bottom">
         <div className="container">
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <FaBars />
+          <button 
+            className="navbar-toggler border-0" 
+            type="button" 
+            onClick={toggleMobileMenu}
+          >
+            {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
           </button>
           
-          <div className="collapse navbar-collapse" id="navbarNav">
+          <div className={`navbar-collapse ${isMobileMenuOpen ? 'show' : ''}`}>
             <ul className="navbar-nav me-auto">
               <li className="nav-item">
                 <Link className="nav-link fw-bold" to="/">Accueil</Link>
@@ -90,7 +110,7 @@ const Navbar = () => {
       </nav>
 
       {showSearch && (
-        <div className="container-fluid bg-light py-3 border-bottom">
+        <div className="search-container container-fluid bg-light py-3 border-bottom">
           <div className="container">
             <div className="input-group">
               <input 
@@ -106,7 +126,12 @@ const Navbar = () => {
           </div>
         </div>
       )}
-    </>
+
+      <div 
+        className={`mobile-overlay ${isMobileMenuOpen ? 'show' : ''}`}
+        onClick={toggleMobileMenu}
+      />
+    </div>
   );
 };
 
