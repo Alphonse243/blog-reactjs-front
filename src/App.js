@@ -5,6 +5,8 @@ import Home from './components/Home';
 import Navbar from './components/Navbar';
 import PostDetail from './components/PostDetail';
 import Footer from './components/Footer';
+import CategoryPage from './components/CategoryPage';
+import Register from './components/Register';
 import { isAuthenticated } from './services/auth';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -31,6 +33,10 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/post/:id" element={<PostDetail />} />
+        <Route path="/actualites" element={<CategoryPage />}>
+          <Route path=":category" element={<CategoryPage />} />
+        </Route>
+        <Route path="/register" element={<Register />} />
         <Route element={<ProtectedRoute />}>
           <Route path="/dashboard" element={<div>Page protégée</div>} />
         </Route>

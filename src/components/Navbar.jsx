@@ -11,6 +11,13 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
+  const categories = [
+    { name: 'Actualités', path: '/actualites' },
+    { name: 'Technologie', path: '/actualites/technologie' },
+    { name: 'Sport', path: '/actualites/sport' },
+    { name: 'Culture', path: '/actualites/culture' }
+  ];
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -73,28 +80,11 @@ const Navbar = () => {
               <li className="nav-item">
                 <Link className="nav-link fw-bold" to="/">Accueil</Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/actualites">Actualités</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/sport">Sport</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/culture">Culture</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/technologie">Technologie</Link>
-              </li>
-              <li className="nav-item dropdown">
-                <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                  Plus
-                </a>
-                <ul className="dropdown-menu">
-                  <li><Link className="dropdown-item" to="/science">Science</Link></li>
-                  <li><Link className="dropdown-item" to="/sante">Santé</Link></li>
-                  <li><Link className="dropdown-item" to="/economie">Économie</Link></li>
-                </ul>
-              </li>
+              {categories.map((cat) => (
+                <li key={cat.path} className="nav-item">
+                  <Link className="nav-link" to={cat.path}>{cat.name}</Link>
+                </li>
+              ))}
             </ul>
             
             <div className="d-flex align-items-center">
