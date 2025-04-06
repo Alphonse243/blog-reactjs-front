@@ -1,0 +1,137 @@
+.post-detail-container {
+  margin-bottom: 3rem;
+}
+
+.post-hero {
+  height: 60vh;
+  min-height: 400px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8));
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 3rem;
+  color: white;
+}
+
+.post-title {
+  font-size: 3rem;
+  margin: 1rem 0;
+  animation: fadeIn 1s ease-out;
+}
+
+.post-meta {
+  display: flex;
+  gap: 2rem;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.post-meta .icon {
+  margin-right: 0.5rem;
+}
+
+.post-content {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #2d3748;
+  animation: slideUp 0.8s ease-out;
+}
+
+.post-content p {
+  margin-bottom: 1.5rem;
+}
+
+.post-actions {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem 0;
+  border-top: 1px solid #e2e8f0;
+  margin-top: 2rem;
+}
+
+.action-btn {
+  background: none;
+  border: none;
+  color: #4a5568;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.3s ease;
+  padding: 0.5rem 1rem;
+  border-radius: 30px;
+}
+
+.action-btn:hover {
+  color: #2b6cb0;
+  background-color: #ebf4ff;
+}
+
+@media (max-width: 768px) {
+  .post-hero {
+    height: 40vh;
+  }
+
+  .post-title {
+    font-size: 2rem;
+  }
+
+  .post-meta {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .post-actions {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
+
+.related-post-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s ease;
+}
+
+.related-post-card:hover {
+  transform: translateY(-5px);
+}
+
+.related-post-card .post-image-wrapper {
+  position: relative;
+  padding-top: 66.67%;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.related-post-card img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.related-post-card:hover img {
+  transform: scale(1.05);
+}
+
+.related-post-card h4 {
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+  color: #2d3748;
+}

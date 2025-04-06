@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom
 import Login from './components/Login';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
+import PostDetail from './components/PostDetail';
+import Footer from './components/Footer';
 import { isAuthenticated } from './services/auth';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -28,10 +30,12 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/post/:id" element={<PostDetail />} />
         <Route element={<ProtectedRoute />}>
           <Route path="/dashboard" element={<div>Page protégée</div>} />
         </Route>
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 };

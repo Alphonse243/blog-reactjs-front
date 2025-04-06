@@ -241,34 +241,36 @@ const Home = () => {
           {posts.map((post) => (
             <div key={post.id} className="col-12 col-md-6 col-lg-4">
               <article className="post-card">
-                <div className="post-image-wrapper">
-                  <img src={post.image} alt={post.title} className="post-image" />
-                  <div className="category-badge">{post.category}</div>
-                </div>
-                <div className="post-content">
-                  <h2 className="post-title">{post.title}</h2>
-                  <p className="post-excerpt">{post.excerpt}</p>
-                  <div className="post-meta">
-                    <div className="author">
-                      <FaUser className="icon" />
-                      <span>{post.author}</span>
+                <Link to={`/post/${post.id}`} className="post-link">
+                  <div className="post-image-wrapper">
+                    <img src={post.image} alt={post.title} className="post-image" />
+                    <div className="category-badge">{post.category}</div>
+                  </div>
+                  <div className="post-content">
+                    <h2 className="post-title">{post.title}</h2>
+                    <p className="post-excerpt">{post.excerpt}</p>
+                    <div className="post-meta">
+                      <div className="author">
+                        <FaUser className="icon" />
+                        <span>{post.author}</span>
+                      </div>
+                      <div className="date">
+                        <FaRegClock className="icon" />
+                        <span>{post.date}</span>
+                      </div>
                     </div>
-                    <div className="date">
-                      <FaRegClock className="icon" />
-                      <span>{post.date}</span>
+                    <div className="post-actions">
+                      <button className="action-btn">
+                        <FaRegHeart className="icon" />
+                        <span>{post.likes}</span>
+                      </button>
+                      <button className="action-btn">
+                        <FaRegComment className="icon" />
+                        <span>{post.comments}</span>
+                      </button>
                     </div>
                   </div>
-                  <div className="post-actions">
-                    <button className="action-btn">
-                      <FaRegHeart className="icon" />
-                      <span>{post.likes}</span>
-                    </button>
-                    <button className="action-btn">
-                      <FaRegComment className="icon" />
-                      <span>{post.comments}</span>
-                    </button>
-                  </div>
-                </div>
+                </Link>
               </article>
             </div>
           ))}
