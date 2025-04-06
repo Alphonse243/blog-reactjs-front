@@ -15,6 +15,8 @@ import Dashboard from './components/Dashboard';
 import About from './components/About';
 import Contact from './components/Contact';
 import Help from './components/Help';
+import Chat from './components/Chat';
+import OnlineUsers from './components/OnlineUsers';
 import { isAuthenticated } from './services/auth';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { ThemeProvider } from './contexts/ThemeContext';
@@ -78,6 +80,8 @@ const App = () => {
           {/* Page 404 pour les routes non trouvées */}
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <OnlineUsers />
+        <Chat /> {/* Le chat est rendu ici, donc disponible sur toutes les pages */}
         <Footer />
       </BrowserRouter>
     </ThemeProvider>
