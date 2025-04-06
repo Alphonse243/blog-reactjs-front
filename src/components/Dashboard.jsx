@@ -206,16 +206,16 @@ const Dashboard = () => {
             {/* Cartes de statistiques */}
             <div className="row g-3 mb-4">
               {stats.map((stat, index) => (
-                <div key={index} className="col-md-6 col-lg-3">
-                  <div className="card border-0 shadow-sm">
+                <div key={index} className="col-sm-6 col-xl-3">
+                  <div className="card border-0 shadow-sm h-100">
                     <div className="card-body">
                       <div className="d-flex align-items-center">
-                        <div className="stat-icon" style={{ color: stat.color }}>
-                          {stat.icon}
+                        <div className="rounded-3 p-3 bg-light">
+                          <span className="fs-4" style={{ color: stat.color }}>{stat.icon}</span>
                         </div>
                         <div className="ms-3">
-                          <h6 className="card-title mb-0">{stat.title}</h6>
-                          <h3 className="mb-0">{stat.count}</h3>
+                          <h6 className="text-secondary mb-1">{stat.title}</h6>
+                          <h3 className="mb-0 fw-bold">{stat.count}</h3>
                         </div>
                       </div>
                     </div>
@@ -225,19 +225,19 @@ const Dashboard = () => {
             </div>
 
             {/* Graphiques avec nouvelle disposition */}
-            <div className="row g-4">
+            <div className="row g-4 mb-4">
               <div className="col-lg-8">
-                <div className="card border-0 shadow-sm">
+                <div className="card border-0 shadow-sm h-100">
                   <div className="card-body">
                     <div className="d-flex justify-content-between align-items-center mb-4">
-                      <h5 className="card-title mb-0">Vue d'ensemble</h5>
+                      <h5 className="card-title">Vue d'ensemble</h5>
                       <select className="form-select form-select-sm w-auto">
                         <option>7 derniers jours</option>
                         <option>30 derniers jours</option>
                         <option>Cette année</option>
                       </select>
                     </div>
-                    <div style={{ height: '250px' }}>
+                    <div style={{ height: '300px' }}>
                       <Line data={viewsData} options={chartOptions} />
                     </div>
                   </div>
@@ -245,7 +245,7 @@ const Dashboard = () => {
               </div>
               
               <div className="col-lg-4">
-                <div className="card border-0 shadow-sm">
+                <div className="card border-0 shadow-sm h-100">
                   <div className="card-body">
                     <h5 className="card-title mb-4">Distribution</h5>
                     <div style={{ height: '250px' }}>
@@ -326,42 +326,44 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="dashboard-container py-4">
+    <div className="bg-light min-vh-100 py-4">
       <div className="container-fluid px-4">
-        {/* Header amélioré */}
-        <div className="dashboard-header mb-4">
-          <div className="row align-items-center">
-            <div className="col">
-              <h1 className="h3 mb-0 text-gray-800">Dashboard</h1>
-              <p className="mb-0 text-gray-600">Bienvenue dans votre espace d'administration</p>
-            </div>
-            <div className="col-auto d-flex gap-2">
-              <button className="btn btn-light position-relative">
-                <FaBell />
-                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                  3
-                </span>
-              </button>
-              <button className="btn btn-primary d-flex align-items-center">
-                <FaRocket className="me-2" />
-                Actions rapides
-              </button>
-            </div>
+        {/* Header */}
+        <div className="d-flex justify-content-between align-items-center mb-4">
+          <div>
+            <h1 className="h3 text-gray-800 mb-1">Dashboard</h1>
+            <p className="text-secondary mb-0">Bienvenue dans votre espace d'administration</p>
+          </div>
+          <div className="d-flex gap-2">
+            <button className="btn btn-light position-relative">
+              <FaBell />
+              <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">3</span>
+            </button>
+            <button className="btn btn-primary d-flex align-items-center shadow-sm">
+              <FaRocket className="me-2" />
+              Actions rapides
+            </button>
           </div>
         </div>
 
-        {/* Navigation améliorée */}
-        <div className="dashboard-nav mb-4">
-          {dashboardSections.map(section => (
-            <button
-              key={section.id}
-              className={`dashboard-nav-item ${currentTab === section.id ? 'active' : ''}`}
-              onClick={() => setCurrentTab(section.id)}
-            >
-              {section.icon}
-              <span className="ms-2">{section.title}</span>
-            </button>
-          ))}
+        {/* Navigation */}
+        <div className="card border-0 shadow-sm mb-4">
+          <div className="card-body p-2">
+            <nav className="nav nav-pills nav-fill">
+              {dashboardSections.map(section => (
+                <button
+                  key={section.id}
+                  className={`nav-link rounded-pill mx-1 d-flex align-items-center justify-content-center ${
+                    currentTab === section.id ? 'active bg-primary' : 'text-secondary'
+                  }`}
+                  onClick={() => setCurrentTab(section.id)}
+                >
+                  {section.icon}
+                  <span className="ms-2 d-none d-md-inline">{section.title}</span>
+                </button>
+              ))}
+            </nav>
+          </div>
         </div>
 
         {/* Contenu dynamique */}
