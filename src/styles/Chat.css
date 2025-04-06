@@ -51,19 +51,19 @@
 
 /* En-tête du chat */
 .chat-header {
-  background: linear-gradient(135deg, #007bff, #0056b3);
-  color: white;
-  padding: 1.25rem;
-  border-radius: 20px 20px 0 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
 }
 
-.chat-header-user {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+.chat-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .chat-avatar {
