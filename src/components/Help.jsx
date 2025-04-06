@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaQuestionCircle, FaSearch } from 'react-icons/fa';
+import '../styles/animations.css';
 
 const Help = () => {
   const faqs = [
@@ -20,7 +21,7 @@ const Help = () => {
   return (
     <div className="bg-light min-vh-100">
       <div className="bg-primary bg-gradient text-white py-5 mb-5">
-        <div className="container text-center">
+        <div className="container text-center fade-in">
           <h1 className="display-4 fw-bold mb-3">Centre d'aide</h1>
           <p className="lead mb-4">Comment pouvons-nous vous aider ?</p>
           <div className="row justify-content-center">
@@ -44,10 +45,13 @@ const Help = () => {
         {/* FAQ Section */}
         <div className="row justify-content-center mb-5">
           <div className="col-lg-8">
-            <h2 className="h4 mb-4">Questions fréquentes</h2>
+            <h2 className="h4 mb-4 slide-in-right">Questions fréquentes</h2>
             <div className="accordion" id="faqAccordion">
               {faqs.map((faq, index) => (
-                <div className="accordion-item border-0 mb-3 shadow-sm" key={index}>
+                <div 
+                  className={`accordion-item border-0 mb-3 shadow-sm reveal delay-${index + 1} hover-lift`} 
+                  key={index}
+                >
                   <h3 className="accordion-header">
                     <button
                       className="accordion-button collapsed"
@@ -74,7 +78,7 @@ const Help = () => {
         </div>
 
         {/* Contact Support Section */}
-        <div className="row justify-content-center text-center">
+        <div className="row justify-content-center text-center reveal">
           <div className="col-lg-6">
             <h2 className="h4 mb-4">Besoin de plus d'aide ?</h2>
             <p className="text-secondary mb-4">

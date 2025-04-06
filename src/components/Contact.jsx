@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaPaperPlane } from 'react-icons/fa';
+import '../styles/animations.css';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -18,7 +19,7 @@ const Contact = () => {
   return (
     <div className="bg-light min-vh-100">
       <div className="bg-primary bg-gradient text-white py-5 mb-5">
-        <div className="container text-center">
+        <div className="container text-center fade-in">
           <h1 className="display-4 fw-bold mb-3">Contactez-nous</h1>
           <p className="lead mb-0">Nous sommes là pour vous aider</p>
         </div>
@@ -26,9 +27,9 @@ const Contact = () => {
 
       <div className="container py-5">
         <div className="row g-4 mb-5">
-          {/* Informations de contact */}
-          <div className="col-md-4">
-            <div className="card border-0 shadow-sm h-100">
+          {/* Informations de contact avec animations */}
+          <div className="col-md-4 slide-in-right delay-1">
+            <div className="card border-0 shadow-sm h-100 hover-lift">
               <div className="card-body text-center">
                 <FaEnvelope className="text-primary fs-1 mb-3" />
                 <h3 className="h5 mb-2">Email</h3>
@@ -36,8 +37,8 @@ const Contact = () => {
               </div>
             </div>
           </div>
-          <div className="col-md-4">
-            <div className="card border-0 shadow-sm h-100">
+          <div className="col-md-4 slide-in-right delay-2">
+            <div className="card border-0 shadow-sm h-100 hover-lift">
               <div className="card-body text-center">
                 <FaPhone className="text-primary fs-1 mb-3" />
                 <h3 className="h5 mb-2">Téléphone</h3>
@@ -45,8 +46,8 @@ const Contact = () => {
               </div>
             </div>
           </div>
-          <div className="col-md-4">
-            <div className="card border-0 shadow-sm h-100">
+          <div className="col-md-4 slide-in-right delay-3">
+            <div className="card border-0 shadow-sm h-100 hover-lift">
               <div className="card-body text-center">
                 <FaMapMarkerAlt className="text-primary fs-1 mb-3" />
                 <h3 className="h5 mb-2">Adresse</h3>
@@ -56,10 +57,10 @@ const Contact = () => {
           </div>
         </div>
 
-        {/* Formulaire de contact */}
-        <div className="row justify-content-center">
+        {/* Formulaire de contact avec animation */}
+        <div className="row justify-content-center reveal">
           <div className="col-lg-8">
-            <div className="card border-0 shadow-sm">
+            <div className="card border-0 shadow-sm scale-in">
               <div className="card-body p-4">
                 <h2 className="h4 mb-4">Envoyez-nous un message</h2>
                 <form onSubmit={handleSubmit}>
