@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { login } from '../services/auth';
 import '../styles/Login.css';
 
 const Login = () => {
+  const navigate = useNavigate();
   const [credentials, setCredentials] = useState({
     email: '',
     password: ''
   });
+  const [error, setError] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -15,15 +19,20 @@ const Login = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Login attempt:', credentials);
-    // Ici vous ajouterez la logique d'authentification
+    try {
+      await login(credentials);
+      navigate('/', { replace: true });
+    } catch (err) {
+      setError('Échec de la connexion');
+    }
   };
 
   return (
     <div className="login-container">
       <form className="login-form" onSubmit={handleSubmit}>
+        {error && <div className="error-message">{error}</div>}
         <h2>Connexion</h2>
         <div className="form-group">
           <label>Email:</label>
