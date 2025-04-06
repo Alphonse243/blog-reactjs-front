@@ -39,9 +39,9 @@ const App = () => {
           <Route path=":category" element={<CategoryPage />} />
         </Route>
         <Route path="/register" element={<Register />} />
+        <Route path="/profile" element={<Profile />} />
         <Route element={<ProtectedRoute />}>
           <Route path="/dashboard" element={<div>Page protégée</div>} />
-          <Route path="/profile" element={<Profile />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
