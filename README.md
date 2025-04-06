@@ -1,70 +1,95 @@
-# Démarrer avec Create React App
+# React Blog Project
 
-Ce projet a été créé avec [Create React App](https://github.com/facebook/create-react-app).
+## Structure du Projet
+```
+react-front/
+├── api/                      # Backend API (PHP)
+│   ├── config/              # Configuration files
+│   │   └── database.php     # Database configuration
+│   ├── database/
+│   │   └── migrations/      # Database schema
+│   │       └── schema.sql
+│   ├── public/              # Public directory
+│   │   └── index.php       # Entry point for API
+│   └── src/
+│       ├── Controllers/     # API Controllers
+│       │   ├── BaseController.php
+│       │   ├── UserController.php
+│       │   ├── PostController.php
+│       │   ├── CategoryController.php
+│       │   └── CommentController.php
+│       └── Models/          # Database Models
+│           ├── User.php
+│           ├── Post.php
+│           ├── Category.php
+│           ├── Tag.php
+│           └── Comment.php
+├── src/                     # Frontend React
+│   ├── api/                 # API Integration
+│   │   ├── axios.js        # Axios configuration
+│   │   └── config.js       # API endpoints
+│   ├── components/         # React Components
+│   ├── pages/             # React Pages
+│   └── App.js             # Main React component
+└── webpack.config.js       # Webpack configuration
+```
 
-## Scripts disponibles
+## Technologies Utilisées
 
-Dans le répertoire du projet, vous pouvez exécuter :
+### Backend (API)
+- PHP Vanilla
+- Illuminate/Database (Eloquent ORM)
+- MySQL Database
 
-### `npm start`
+### Frontend
+- React
+- Axios pour les requêtes API
+- React Router pour la navigation
 
-Lance l'application en mode développement.\
-Ouvrez [http://localhost:3000](http://localhost:3000) pour la voir dans votre navigateur.
+## Installation
 
-La page se rechargera lorsque vous faites des modifications.\
-Vous pourrez également voir les erreurs de lint dans la console.
+1. Configuration Backend (API)
+```bash
+cd api
+composer install
+```
 
-### `npm test`
+2. Configuration Base de données
+```bash
+# Importer le schéma de la base de données
+mysql -u root -p react_blog < api/database/migrations/schema.sql
+```
 
-Lance le testeur en mode watch interactif.\
-Voir la section sur [l'exécution des tests](https://facebook.github.io/create-react-app/docs/running-tests) pour plus d'informations.
+3. Configuration Frontend
+```bash
+npm install
+npm start
+```
 
-### `npm run build`
+## API Endpoints
 
-Compile l'application pour la production dans le dossier `build`.\
-Il regroupe correctement React en mode production et optimise la compilation pour de meilleures performances.
+### Users
+- GET /api/users - Liste des utilisateurs
+- GET /api/users/{id} - Détails d'un utilisateur
+- POST /api/users - Créer un utilisateur
+- PUT /api/users/{id} - Modifier un utilisateur
+- DELETE /api/users/{id} - Supprimer un utilisateur
 
-La compilation est minifiée et les noms de fichiers incluent les hachages.\
-Votre application est prête à être déployée !
+### Posts
+- GET /api/posts - Liste des articles
+- GET /api/posts/{id} - Détails d'un article
+- POST /api/posts - Créer un article
+- PUT /api/posts/{id} - Modifier un article
+- DELETE /api/posts/{id} - Supprimer un article
 
-Voir la section sur le [déploiement](https://facebook.github.io/create-react-app/docs/deployment) pour plus d'informations.
+### Categories
+- GET /api/categories - Liste des catégories
+- POST /api/categories - Créer une catégorie
+- PUT /api/categories/{id} - Modifier une catégorie
+- DELETE /api/categories/{id} - Supprimer une catégorie
 
-### `npm run eject`
-
-**Remarque : cette opération est irréversible. Une fois que vous avez `eject`, vous ne pouvez pas revenir en arrière !**
-
-Si vous n'êtes pas satisfait des choix de configuration et d'outils de construction, vous pouvez `eject` à tout moment. Cette commande supprimera la dépendance unique de votre projet.
-
-Au lieu de cela, elle copiera tous les fichiers de configuration et les dépendances transitoires (webpack, Babel, ESLint, etc.) directement dans votre projet afin que vous ayez un contrôle total sur eux. Toutes les commandes sauf `eject` fonctionneront toujours, mais elles pointeront vers les scripts copiés afin que vous puissiez les modifier. À ce stade, vous êtes seul.
-
-Vous n'avez jamais besoin d'utiliser `eject`. L'ensemble de fonctionnalités sélectionnées est adapté aux petits et moyens déploiements, et vous ne devriez pas vous sentir obligé d'utiliser cette fonctionnalité. Cependant, nous comprenons que cet outil ne serait pas utile si vous ne pouviez pas le personnaliser lorsque vous êtes prêt.
-
-## En savoir plus
-
-Vous pouvez en savoir plus dans la [documentation de Create React App](https://facebook.github.io/create-react-app/docs/getting-started).
-
-Pour apprendre React, consultez la [documentation de React](https://reactjs.org/).
-
-### Division du code
-
-Cette section a été déplacée ici : [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyse de la taille du bundle
-
-Cette section a été déplacée ici : [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Créer une Progressive Web App
-
-Cette section a été déplacée ici : [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Configuration avancée
-
-Cette section a été déplacée ici : [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Déploiement
-
-Cette section a été déplacée ici : [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` échoue à minifier
-
-Cette section a été déplacée ici : [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Comments
+- GET /api/comments - Liste des commentaires
+- POST /api/comments - Créer un commentaire
+- PUT /api/comments/{id}/approve - Approuver un commentaire
+- DELETE /api/comments/{id} - Supprimer un commentaire
