@@ -34,14 +34,12 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/post/:id" element={<PostDetail />} />
-        <Route path="/actualites" element={<CategoryPage />}>
-          <Route path=":category" element={<CategoryPage />} />
-        </Route>
         <Route path="/register" element={<Register />} />
         <Route path="/profile" element={<Profile />} />
-        <Route element={<ProtectedRoute />}>
-          <Route path="/dashboard" element={<div>Page protégée</div>} />
+        <Route path="/post/:id" element={<PostDetail />} />
+        <Route path="/dashboard" element={<div>Page Dashboard</div>} />
+        <Route path="/actualites" element={<CategoryPage />}>
+          <Route path=":category" element={<CategoryPage />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
