@@ -30,32 +30,42 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
-      <form className="login-form" onSubmit={handleSubmit}>
-        {error && <div className="error-message">{error}</div>}
-        <h2>Connexion</h2>
-        <div className="form-group">
-          <label>Email:</label>
-          <input
-            type="email"
-            name="email"
-            value={credentials.email}
-            onChange={handleChange}
-            required
-          />
+    <div className="container mt-5">
+      <div className="row justify-content-center">
+        <div className="col-md-6 col-lg-4">
+          <form className="card shadow" onSubmit={handleSubmit}>
+            <div className="card-body">
+              {error && <div className="alert alert-danger">{error}</div>}
+              <h2 className="text-center mb-4">Connexion</h2>
+              <div className="mb-3">
+                <label className="form-label">Email:</label>
+                <input
+                  type="email"
+                  className="form-control"
+                  name="email"
+                  value={credentials.email}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="mb-3">
+                <label className="form-label">Mot de passe:</label>
+                <input
+                  type="password"
+                  className="form-control"
+                  name="password"
+                  value={credentials.password}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <button type="submit" className="btn btn-primary w-100">
+                Se connecter
+              </button>
+            </div>
+          </form>
         </div>
-        <div className="form-group">
-          <label>Mot de passe:</label>
-          <input
-            type="password"
-            name="password"
-            value={credentials.password}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <button type="submit">Se connecter</button>
-      </form>
+      </div>
     </div>
   );
 };
