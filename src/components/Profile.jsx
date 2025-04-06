@@ -4,7 +4,35 @@ import '../styles/Profile.css';
 
 const Profile = () => {
   const [activeTab, setActiveTab] = useState('posts');
-  const [userProfile] = useState({
+
+  const mockPosts = [
+    {
+      id: 1,
+      title: "L'avenir de l'Intelligence Artificielle",
+      image: "https://picsum.photos/id/1/600/400",
+      date: "20 Dec 2023",
+      likes: 45,
+      comments: 12
+    },
+    {
+      id: 2,
+      title: "Guide complet du développement web",
+      image: "https://picsum.photos/id/2/600/400",
+      date: "18 Dec 2023",
+      likes: 38,
+      comments: 8
+    },
+    {
+      id: 3,
+      title: "Les meilleures pratiques en cybersécurité",
+      image: "https://picsum.photos/id/3/600/400",
+      date: "15 Dec 2023",
+      likes: 52,
+      comments: 15
+    }
+  ];
+
+  const userProfile = {
     name: 'John Doe',
     bio: 'Passionné de technologie et d\'innovation',
     avatar: 'https://picsum.photos/id/1005/200/200',
@@ -13,7 +41,7 @@ const Profile = () => {
       followers: 1240,
       following: 360
     }
-  });
+  };
 
   return (
     <div className="profile-container">
@@ -63,7 +91,8 @@ const Profile = () => {
               className={`nav-link ${activeTab === 'posts' ? 'active' : ''}`}
               onClick={() => setActiveTab('posts')}
             >
-              Mes articles
+              <FaUser className="me-2" />
+              Mes articles (23)
             </button>
           </li>
           <li className="nav-item">
@@ -71,7 +100,8 @@ const Profile = () => {
               className={`nav-link ${activeTab === 'saved' ? 'active' : ''}`}
               onClick={() => setActiveTab('saved')}
             >
-              Sauvegardés
+              <FaBookmark className="me-2" />
+              Sauvegardés (15)
             </button>
           </li>
           <li className="nav-item">
@@ -79,13 +109,34 @@ const Profile = () => {
               className={`nav-link ${activeTab === 'likes' ? 'active' : ''}`}
               onClick={() => setActiveTab('likes')}
             >
-              J'aime
+              <FaHeart className="me-2" />
+              J'aime (45)
             </button>
           </li>
         </ul>
 
         <div className="tab-content mt-4">
-          {/* Contenu des onglets sera ajouté ici */}
+          <div className="row g-4">
+            {mockPosts.map(post => (
+              <div key={post.id} className="col-md-4">
+                <div className="profile-post-card">
+                  <div className="post-image">
+                    <img src={post.image} alt={post.title} />
+                  </div>
+                  <div className="post-info p-3">
+                    <h3 className="post-title">{post.title}</h3>
+                    <div className="post-meta">
+                      <span className="date">{post.date}</span>
+                      <div className="stats">
+                        <span><FaHeart /> {post.likes}</span>
+                        <span><FaComment /> {post.comments}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

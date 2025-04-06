@@ -8,6 +8,7 @@ import Footer from './components/Footer';
 import CategoryPage from './components/CategoryPage';
 import Register from './components/Register';
 import NotFound from './components/NotFound';
+import Profile from './components/Profile';
 import { isAuthenticated } from './services/auth';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -40,6 +41,7 @@ const App = () => {
         <Route path="/register" element={<Register />} />
         <Route element={<ProtectedRoute />}>
           <Route path="/dashboard" element={<div>Page protégée</div>} />
+          <Route path="/profile" element={<Profile />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>

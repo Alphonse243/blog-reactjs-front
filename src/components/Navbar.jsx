@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { isAuthenticated, logout } from '../services/auth';
 import { useNavigate } from 'react-router-dom';
-import { FaSearch, FaUserCircle, FaBars, FaTimes } from 'react-icons/fa';
+import { FaSearch, FaUserCircle, FaBars, FaTimes, FaCog, FaSignOutAlt } from 'react-icons/fa';
 import '../styles/Navbar.css';
 
 const Navbar = () => {
@@ -17,6 +17,11 @@ const Navbar = () => {
     { name: 'Recherche', path: '/search', icon: 'FaSearch' },
     { name: 'Contact', path: '/contact', icon: 'FaEnvelope' },
     { name: 'À propos', path: '/about', icon: 'FaInfoCircle' }
+  ];
+
+  const userMenuItems = [
+    { name: 'Mon Profil', path: '/profile', icon: <FaUserCircle /> },
+    { name: 'Paramètres', path: '/settings', icon: <FaCog /> },
   ];
 
   useEffect(() => {
@@ -54,14 +59,39 @@ const Navbar = () => {
           <div className="d-flex align-items-center">
             {isAuthenticated() ? (
               <div className="dropdown">
-                <button className="btn btn-link text-white dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                  <FaUserCircle className="me-1" /> Mon Compte
+                <button 
+                  className="btn btn-link text-white dropdown-toggle d-flex align-items-center" 
+                  type="button" 
+                  data-bs-toggle="dropdown"
+                >
+                  <img 
+                    src="https://picsum.photos/id/1005/32/32" 
+                    alt="Profile" 
+                    className="rounded-circle me-2" 
+                    width="32" 
+                    height="32" 
+                  />
+                  <span>Mon Compte</span>
                 </button>
                 <ul className="dropdown-menu dropdown-menu-end">
-                  <li><Link className="dropdown-item" to="/profile">Profil</Link></li>
-                  <li><Link className="dropdown-item" to="/settings">Paramètres</Link></li>
+                  {userMenuItems.map((item) => (
+                    <li key={item.path}>
+                      <Link className="dropdown-item d-flex align-items-center" to={item.path}>
+                        {item.icon}
+                        <span className="ms-2">{item.name}</span>
+                      </Link>
+                    </li>
+                  ))}
                   <li><hr className="dropdown-divider" /></li>
-                  <li><button className="dropdown-item" onClick={handleLogout}>Déconnexion</button></li>
+                  <li>
+                    <button 
+                      className="dropdown-item d-flex align-items-center text-danger" 
+                      onClick={handleLogout}
+                    >
+                      <FaSignOutAlt />
+                      <span className="ms-2">Déconnexion</span>
+                    </button>
+                  </li>
                 </ul>
               </div>
             ) : (

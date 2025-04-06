@@ -37,6 +37,26 @@
 
 .dropdown-menu {
   animation: fadeIn 0.2s ease;
+  min-width: 200px;
+  padding: 0.5rem 0;
+}
+
+.dropdown-item {
+  padding: 0.5rem 1rem;
+  transition: all 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #f8f9fa;
+}
+
+.dropdown-item svg {
+  font-size: 1.1rem;
+  opacity: 0.7;
+}
+
+.dropdown-item:hover svg {
+  opacity: 1;
 }
 
 @keyframes slideDown {
