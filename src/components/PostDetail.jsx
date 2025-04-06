@@ -46,7 +46,7 @@ const PostDetail = () => {
     <div>
       <div className="position-relative">
         <div 
-          className="bg-dark position-relative"
+          className="bg-dark"
           style={{
             height: '60vh',
             backgroundImage: `url(${post.image})`,
@@ -55,18 +55,18 @@ const PostDetail = () => {
           }}
         >
           <div className="position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-50">
-            <div className="container h-100 d-flex align-items-end pb-5">
-              <div className="text-white">
-                <span className="badge bg-primary">{post.category}</span>
-                <h1 className="display-4">{post.title}</h1>
-                <div className="d-flex align-items-center mt-3">
-                  <div className="me-3">
-                    <FaUser className="me-1" />
-                    <span>{post.author}</span>
-                  </div>
-                  <div>
-                    <FaRegClock className="me-1" />
-                    <span>{post.date}</span>
+            <div className="container h-100">
+              <div className="row h-100 align-items-end pb-5">
+                <div className="col-lg-8">
+                  <span className="badge bg-primary mb-2">{post.category}</span>
+                  <h1 className="text-white display-4 fw-bold">{post.title}</h1>
+                  <div className="d-flex text-white opacity-75 mt-3">
+                    <div className="me-3">
+                      <FaUser className="me-2" />{post.author}
+                    </div>
+                    <div>
+                      <FaRegClock className="me-2" />{post.date}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -75,27 +75,24 @@ const PostDetail = () => {
         </div>
       </div>
 
-      <div className="container my-5">
+      <div className="container py-5">
         <div className="row justify-content-center">
           <div className="col-lg-8">
-            <article className="post-content">
+            <article className="fs-5 text-secondary lh-lg mb-5">
               {post.content.split('\n').map((paragraph, index) => (
                 <p key={index}>{paragraph}</p>
               ))}
             </article>
 
-            <div className="post-actions d-flex justify-content-between mt-4">
+            <div className="d-flex gap-3 py-4 border-top">
               <button className="btn btn-outline-primary">
-                <FaRegHeart className="me-2" />
-                <span>{post.likes} J'aime</span>
+                <FaRegHeart className="me-2" />{post.likes} J'aime
               </button>
               <button className="btn btn-outline-secondary">
-                <FaRegComment className="me-2" />
-                <span>{post.comments.length} Commentaires</span>
+                <FaRegComment className="me-2" />{post.comments.length} Commentaires
               </button>
-              <button className="btn btn-outline-success">
-                <FaShare className="me-2" />
-                <span>Partager</span>
+              <button className="btn btn-outline-success ms-auto">
+                <FaShare className="me-2" />Partager
               </button>
             </div>
           </div>

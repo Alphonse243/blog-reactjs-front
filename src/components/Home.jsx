@@ -236,50 +236,49 @@ const Home = () => {
   ]);
 
   return (
-    <div className="home-container">
-      <div className="hero-section">
-        <div className="container">
-          <h1 className="display-4 fade-in">Explorez l'actualité</h1>
-          <p className="lead slide-up">Les dernières nouvelles et tendances.</p>
+    <div>
+      {/* Hero Section avec Bootstrap */}
+      <div className="bg-primary bg-gradient text-white py-5 mb-5">
+        <div className="container text-center">
+          <h1 className="display-4 fw-bold">Explorez l'actualité</h1>
+          <p className="lead">Les dernières nouvelles et tendances.</p>
         </div>
       </div>
 
-      <div className="container mt-5">
+      <div className="container">
         <div className="row g-4">
           {posts.map((post) => (
             <div key={post.id} className="col-12 col-md-6 col-lg-4">
-              <article className="post-card">
-                <Link to={`/post/${post.id}`} className="post-link">
-                  <div className="post-image-wrapper">
-                    <img src={post.image} alt={post.title} className="post-image" />
-                    <div className="category-badge">{post.category}</div>
+              <div className="card h-100 shadow-sm border-0">
+                <Link to={`/post/${post.id}`} className="text-decoration-none">
+                  <div className="position-relative">
+                    <img src={post.image} className="card-img-top" alt={post.title} style={{height: '200px', objectFit: 'cover'}} />
+                    <span className="position-absolute top-0 end-0 badge bg-primary m-2">
+                      {post.category}
+                    </span>
                   </div>
-                  <div className="post-content">
-                    <h2 className="post-title">{post.title}</h2>
-                    <p className="post-excerpt">{post.excerpt}</p>
-                    <div className="post-meta">
-                      <div className="author">
-                        <FaUser className="icon" />
+                  <div className="card-body">
+                    <h5 className="card-title text-dark">{post.title}</h5>
+                    <p className="card-text text-muted small">{post.excerpt}</p>
+                    <div className="d-flex justify-content-between align-items-center text-muted small">
+                      <div className="d-flex align-items-center">
+                        <FaUser className="me-1" />
                         <span>{post.author}</span>
                       </div>
-                      <div className="date">
-                        <FaRegClock className="icon" />
+                      <div className="d-flex align-items-center">
+                        <FaRegClock className="me-1" />
                         <span>{post.date}</span>
                       </div>
                     </div>
-                    <div className="post-actions">
-                      <button className="action-btn">
-                        <FaRegHeart className="icon" />
-                        <span>{post.likes}</span>
-                      </button>
-                      <button className="action-btn">
-                        <FaRegComment className="icon" />
-                        <span>{post.comments}</span>
-                      </button>
+                  </div>
+                  <div className="card-footer bg-white border-top">
+                    <div className="d-flex justify-content-between text-muted small">
+                      <span><FaRegHeart className="me-1" />{post.likes}</span>
+                      <span><FaRegComment className="me-1" />{post.comments}</span>
                     </div>
                   </div>
                 </Link>
-              </article>
+              </div>
             </div>
           ))}
         </div>
