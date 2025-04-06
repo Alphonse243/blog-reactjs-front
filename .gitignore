@@ -21,3 +21,17 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+api/vendor/
+api/.env
+api/.env.backup
+api/.phpunit.result.cache
+api/composer.lock
+api/.php-cs-fixer.cache
+api/.idea/
+api/.vscode/
+api/.DS_Store
+api/Thumbs.db
+api/*.log
+api//logs/
+api/temp/
