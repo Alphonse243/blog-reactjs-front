@@ -5,12 +5,20 @@ import { useNavigate } from 'react-router-dom';
 import { FaSearch, FaUserCircle, FaBars, FaTimes, FaCog, FaSignOutAlt } from 'react-icons/fa';
 import '../styles/Navbar.css';
 
+/**
+ * Composant Navbar - Barre de navigation principale
+ * Gère la navigation, le menu mobile et la recherche
+ */
 const Navbar = () => {
-  const navigate = useNavigate();
+  // État pour la gestion du menu mobile et de la recherche
   const [showSearch, setShowSearch] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
+  /**
+   * Liste des éléments du menu principal
+   * Chaque élément contient un nom, un chemin et une icône
+   */
   const menuItems = [
     { name: 'Accueil', path: '/', icon: 'FaHome' },
     { name: 'Actualités', path: '/actualites', icon: 'FaNewspaper' },
@@ -24,6 +32,10 @@ const Navbar = () => {
     { name: 'Paramètres', path: '/settings', icon: <FaCog /> },
   ];
 
+  /**
+   * Effet pour gérer le scroll
+   * Ajoute une ombre à la navbar lors du défilement
+   */
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -32,6 +44,10 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  /**
+   * Gestionnaire pour le menu mobile
+   * Bascule l'état du menu et bloque/débloque le scroll
+   */
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
     document.body.style.overflow = !isMobileMenuOpen ? 'hidden' : '';

@@ -3,9 +3,18 @@ import { Link } from 'react-router-dom';
 import { FaUser, FaEdit, FaBookmark, FaHeart, FaComment, FaMapMarkerAlt, FaGlobe, FaTwitter, FaLinkedin } from 'react-icons/fa';
 import '../styles/Profile.css';
 
+/**
+ * Composant Profile - Page de profil utilisateur
+ * Affiche les informations de l'utilisateur et ses publications
+ */
 const Profile = () => {
+  // État pour gérer l'onglet actif
   const [activeTab, setActiveTab] = useState('posts');
 
+  /**
+   * Données de test pour les publications
+   * À remplacer par des données réelles de l'API
+   */
   const mockPosts = [
     {
       id: 1,
@@ -33,6 +42,10 @@ const Profile = () => {
     }
   ];
 
+  /**
+   * Données de test pour le profil utilisateur
+   * À remplacer par des données réelles de l'API
+   */
   const userProfile = {
     name: 'John Doe',
     bio: 'Passionné de technologie et d\'innovation',

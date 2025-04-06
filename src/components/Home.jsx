@@ -3,7 +3,15 @@ import { Link } from 'react-router-dom';
 import { FaUser, FaRegClock, FaRegHeart, FaRegComment } from 'react-icons/fa';
 import '../styles/Home.css';
 
+/**
+ * Composant Home - Page d'accueil
+ * Affiche une liste d'articles sous forme de grille
+ */
 const Home = () => {
+  /**
+   * État local pour stocker les articles
+   * Dans un cas réel, ces données viendraient d'une API
+   */
   const [posts, setPosts] = useState([
     {
       id: 1,
