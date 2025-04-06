@@ -7,6 +7,12 @@
   --border-color: #e2e8f0;
   --card-bg: #ffffff;
   --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  /* Navbar specific light theme */
+  --navbar-bg: var(--bg-primary);
+  --navbar-text: var(--text-primary);
+  --navbar-border: var(--border-color);
+  --navbar-hover-bg: var(--bg-secondary);
 }
 
 [data-bs-theme="dark"] {
@@ -23,6 +29,24 @@
   --bs-body-bg: var(--bg-primary);
   --bs-body-color: var(--text-primary);
   --bs-border-color: var(--border-color);
+
+  /* Navbar specific dark theme */
+  --navbar-bg: #1a202c;
+  --navbar-text: #f7fafc;
+  --navbar-border: #4a5568;
+  --navbar-hover-bg: #2d3748;
+
+  /* Dropdown dark theme */
+  --dropdown-bg: #2d3748;
+  --dropdown-text: #f7fafc;
+  --dropdown-border: #4a5568;
+  --dropdown-hover: #1a202c;
+
+  /* Mobile menu dark theme */
+  --mobile-menu-bg: var(--bg-primary);
+  --mobile-menu-text: var(--text-primary);
+  --mobile-menu-hover: rgba(255, 255, 255, 0.1);
+  --mobile-menu-border: var(--border-color);
 }
 
 /* Common styles for both themes */
@@ -37,4 +61,31 @@
 
 .text-muted {
   color: var(--text-secondary) !important;
+}
+
+.navbar {
+  background-color: var(--navbar-bg) !important;
+  border-color: var(--navbar-border) !important;
+}
+
+.navbar-nav .nav-link {
+  color: var(--navbar-text) !important;
+}
+
+.navbar-nav .nav-link:hover {
+  background-color: var(--navbar-hover-bg);
+}
+
+.dropdown-menu {
+  background-color: var(--dropdown-bg);
+  border-color: var(--dropdown-border);
+}
+
+.dropdown-item {
+  color: var(--dropdown-text);
+}
+
+.dropdown-item:hover {
+  background-color: var(--dropdown-hover);
+  color: var(--dropdown-text);
 }

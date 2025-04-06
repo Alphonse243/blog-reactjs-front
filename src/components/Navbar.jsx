@@ -17,6 +17,7 @@ const Navbar = () => {
   const [showSearch, setShowSearch] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [searchQuery, setSearchQuery] = useState(''); // Ajout d'un état pour la recherche
 
   /**
    * Liste des éléments du menu principal
@@ -66,9 +67,19 @@ const Navbar = () => {
     navigate('/');
   };
 
+  // Fonction de gestion de la recherche
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      navigate(`/search?q=${encodeURIComponent(searchQuery)}`);
+      setShowSearch(false);
+      setSearchQuery('');
+    }
+  };
+
   return (
     <div className="navbar-container">
-      <div className={`bg-black text-white py-1 top-nav ${scrolled ? 'shadow' : ''}`}>
+      <div className={`bg-${darkMode ? 'dark' : 'black'} text-white py-1 top-nav ${scrolled ? 'shadow' : ''}`}>
         <div className="container d-flex justify-content-between align-items-center">
           <div className="d-flex align-items-center">
             <Link to="/" className="text-white text-decoration-none">
@@ -127,77 +138,75 @@ const Navbar = () => {
         </div>
       </div>
 
-      <nav className="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+      <nav className={`navbar navbar-expand-lg ${darkMode ? 'navbar-dark bg-dark' : 'navbar-light bg-white'}`}>
         <div className="container">
           <button 
-            className="navbar-toggler border-0" 
+            className={`navbar-toggler border-0 ${darkMode ? 'text-light' : 'text-dark'}`}
             type="button" 
             onClick={toggleMobileMenu}
             aria-label="Toggle navigation"
           >
-            {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
+            {isMobileMenuOpen ? 
+              <FaTimes className={darkMode ? 'text-light' : 'text-dark'} /> : 
+              <FaBars className={darkMode ? 'text-light' : 'text-dark'} />
+            }
           </button>
           
-          <div className={`navbar-collapse ${isMobileMenuOpen ? 'show' : ''}`}>
-            <div className="mobile-header d-lg-none">
-              <div className="d-flex justify-content-between align-items-center p-3">
-                <h5 className="mb-0">Menu</h5>
-                <button 
-                  className="btn-close" 
-                  onClick={closeMenu}
-                  aria-label="Close menu"
-                />
+          <div className={`navbar-collapse mobile-menu ${isMobileMenuOpen ? 'show' : ''} ${darkMode ? 'bg-dark' : 'bg-white'}`}>
+            <div className="d-flex flex-column h-100">
+              <div className={`mobile-header d-lg-none ${darkMode ? 'border-bottom border-secondary' : ''}`}>
+                <div className="d-flex justify-content-between align-items-center p-3">
+                  <h5 className={`mb-0 ${darkMode ? 'text-light' : ''}`}>Menu</h5>
+                  <button 
+                    className={`btn-close ${darkMode ? 'btn-close-white' : ''}`}
+                    onClick={closeMenu}
+                    aria-label="Close menu"
+                  />
+                </div>
               </div>
-              <hr className="my-0" />
-            </div>
 
-            <ul className="navbar-nav me-auto">
-              {menuItems.map((item) => (
-                <li key={item.path} className="nav-item">
-                  <Link 
-                    to={item.path} 
-                    className="nav-link" 
-                    onClick={() => closeMenu()}
+              <ul className="navbar-nav me-auto">
+                {menuItems.map((item) => (
+                  <li key={item.path} className="nav-item">
+                    <Link 
+                      to={item.path} 
+                      className={`nav-link px-3 py-2 ${darkMode ? 'text-light hover-dark' : ''}`}
+                      onClick={() => closeMenu()}
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              
+              {/* Nouvelle barre de recherche intégrée */}
+              <form className="d-flex" onSubmit={handleSearch}>
+                <div className="input-group">
+                  <input 
+                    type="search"
+                    className={`form-control form-control-sm ${darkMode ? 'bg-dark text-light border-secondary' : ''}`}
+                    placeholder="Rechercher..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    aria-label="Rechercher"
+                  />
+                  <button 
+                    className={`btn ${darkMode ? 'btn-outline-light' : 'btn-outline-primary'} btn-sm`}
+                    type="submit"
                   >
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            
-            <div className="d-flex align-items-center">
-              <button 
-                className="btn btn-link text-dark" 
-                onClick={() => setShowSearch(!showSearch)}
-              >
-                <FaSearch />
-              </button>
+                    <FaSearch />
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
       </nav>
 
-      {showSearch && (
-        <div className="search-container container-fluid bg-light py-3 border-bottom">
-          <div className="container">
-            <div className="input-group">
-              <input 
-                type="search" 
-                className="form-control" 
-                placeholder="Rechercher..." 
-                aria-label="Rechercher"
-              />
-              <button className="btn btn-outline-secondary" type="button">
-                <FaSearch />
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
       <div 
         className={`mobile-overlay ${isMobileMenuOpen ? 'show' : ''}`}
         onClick={closeMenu}
+        style={{ backgroundColor: darkMode ? 'rgba(0,0,0,0.7)' : 'rgba(0,0,0,0.5)' }}
       />
     </div>
   );

@@ -76,6 +76,12 @@ const PostDetail = () => {
   // État pour le formulaire de commentaire
   const [newComment, setNewComment] = useState('');
 
+  const handleSubmitComment = (e) => {
+    e.preventDefault();
+    // Simulation d'ajout de commentaire
+    setNewComment('');
+  };
+
   return (
     <div>
       <div className="position-relative">
@@ -158,110 +164,126 @@ const PostDetail = () => {
           <div className="col-lg-8">
             <div className="card border-0 shadow-sm">
               <div className="card-body">
-                <h3 className="card-title h4 mb-4">
-                  <FaComment className="text-primary me-2" />
-                  Commentaires ({comments.length})
-                </h3>
+                <div className="d-flex align-items-center mb-4">
+                  <FaComment className="text-primary me-2 fs-4" />
+                  <h3 className="card-title h4 mb-0">Commentaires ({comments.length})</h3>
+                </div>
 
                 {/* Formulaire de commentaire */}
-                <div className="mb-4 comment-form">
-                  <div className="d-flex gap-3">
-                    <div className="avatar-wrapper">
-                      <img 
-                        src="https://picsum.photos/id/1015/40/40" 
-                        className="rounded-circle border border-2 border-primary p-1"
-                        alt="User" 
-                        width="48"
-                        height="48"
-                      />
-                    </div>
-                    <div className="flex-grow-1">
-                      <div className="form-floating mb-2">
-                        <textarea
-                          className="form-control border-0 bg-light"
-                          placeholder="Votre commentaire"
-                          id="commentText"
-                          style={{ height: '100px', resize: 'none' }}
-                          value={newComment}
-                          onChange={(e) => setNewComment(e.target.value)}
-                        ></textarea>
-                        <label htmlFor="commentText">Partagez votre avis...</label>
+                <div className="comment-form mb-4">
+                  <form onSubmit={handleSubmitComment}>
+                    <div className="d-flex gap-3">
+                      <div className="flex-shrink-0">
+                        <img 
+                          src="https://picsum.photos/id/1015/40/40" 
+                          className="rounded-circle border border-2 border-primary p-1"
+                          alt="User" 
+                          width="48"
+                          height="48"
+                        />
                       </div>
-                      <button className="btn btn-primary px-4 rounded-pill">
-                        <FaComment className="me-2" />
-                        Publier
-                      </button>
+                      <div className="flex-grow-1">
+                        <div className="form-floating mb-2">
+                          <textarea
+                            className="form-control bg-light"
+                            placeholder="Votre commentaire"
+                            id="commentText"
+                            rows="3"
+                            style={{ height: '100px', resize: 'none' }}
+                            value={newComment}
+                            onChange={(e) => setNewComment(e.target.value)}
+                          ></textarea>
+                          <label htmlFor="commentText" className="text-muted">
+                            Partagez votre opinion...
+                          </label>
+                        </div>
+                        <button type="submit" className="btn btn-primary rounded-pill px-4">
+                          <FaComment className="me-2" />
+                          Publier
+                        </button>
+                      </div>
                     </div>
-                  </div>
+                  </form>
                 </div>
 
                 {/* Liste des commentaires */}
-                <div className="comments-list">
-                  {comments.map(comment => (
-                    <div key={comment.id} className="comment-item mb-4 animate-comment">
-                      <div className="d-flex gap-3">
-                        <div className="avatar-wrapper">
-                          <img 
-                            src={comment.avatar} 
-                            className="rounded-circle border border-2 border-light shadow-sm"
-                            alt={comment.author} 
-                            width="48"
-                            height="48"
-                          />
-                        </div>
-                        <div className="flex-grow-1">
-                          <div className="comment-bubble">
-                            <div className="d-flex justify-content-between align-items-center mb-2">
-                              <h6 className="mb-0 fw-bold">{comment.author}</h6>
-                              <small className="text-muted fst-italic">{comment.date}</small>
-                            </div>
-                            <p className="mb-2">{comment.content}</p>
-                            <div className="d-flex gap-3">
-                              <button className="btn btn-sm btn-link text-primary p-0">
-                                <FaRegHeart className="me-1" />
-                                {comment.likes}
-                              </button>
-                              <button className="btn btn-sm btn-link text-primary p-0">
-                                <FaReply className="me-1" />
-                                Répondre
-                              </button>
-                            </div>
+                {comments.length > 0 ? (
+                  <div className="comments-list">
+                    {comments.map((comment, index) => (
+                      <div key={comment.id} 
+                        className="comment-thread mb-4"
+                        style={{ '--animation-order': index }}
+                      >
+                        {/* Commentaire principal */}
+                        <div className="comment-item d-flex gap-3 fade-in-up">
+                          <div className="flex-shrink-0">
+                            <img 
+                              src={comment.avatar} 
+                              className="rounded-circle border border-2 border-light shadow-sm"
+                              alt={comment.author} 
+                              width="48"
+                              height="48"
+                            />
                           </div>
-
-                          {/* Réponses aux commentaires */}
-                          {comment.responses.map(response => (
-                            <div key={response.id} className="ms-4 mt-3 animate-reply">
+                          <div className="flex-grow-1">
+                            <div className="p-3 bg-light rounded-3">
+                              <div className="d-flex justify-content-between align-items-center mb-2">
+                                <h6 className="mb-0 fw-bold">{comment.author}</h6>
+                                <small className="text-muted">{comment.date}</small>
+                              </div>
+                              <p className="mb-2">{comment.content}</p>
                               <div className="d-flex gap-3">
-                                <div className="avatar-wrapper">
-                                  <img 
-                                    src={response.avatar} 
-                                    className="rounded-circle border border-2 border-light shadow-sm"
-                                    width="40"
-                                    height="40"
-                                    alt={response.author} 
-                                  />
-                                </div>
-                                <div className="flex-grow-1">
-                                  <div className="comment-bubble reply-bubble">
-                                    <div className="d-flex justify-content-between align-items-center mb-2">
-                                      <h6 className="mb-0 fw-bold">{response.author}</h6>
-                                      <small className="text-muted fst-italic">{response.date}</small>
+                                <button className="btn btn-sm btn-link text-decoration-none p-0">
+                                  <FaRegHeart className="me-1" />
+                                  {comment.likes}
+                                </button>
+                                <button className="btn btn-sm btn-link text-decoration-none p-0">
+                                  <FaReply className="me-1" />
+                                  Répondre
+                                </button>
+                              </div>
+                            </div>
+
+                            {/* Réponses aux commentaires */}
+                            {comment.responses?.map((response) => (
+                              <div key={response.id} className="ms-4 mt-3 fade-in-left">
+                                <div className="d-flex gap-3">
+                                  <div className="flex-shrink-0">
+                                    <img 
+                                      src={response.avatar} 
+                                      className="rounded-circle border border-2 border-light shadow-sm"
+                                      alt={response.author} 
+                                      width="40"
+                                      height="40"
+                                    />
+                                  </div>
+                                  <div className="flex-grow-1">
+                                    <div className="p-3 bg-light rounded-3">
+                                      <div className="d-flex justify-content-between align-items-center mb-2">
+                                        <h6 className="mb-0 fw-bold">{response.author}</h6>
+                                        <small className="text-muted">{response.date}</small>
+                                      </div>
+                                      <p className="mb-2">{response.content}</p>
+                                      <button className="btn btn-sm btn-link text-decoration-none p-0">
+                                        <FaRegHeart className="me-1" />
+                                        {response.likes}
+                                      </button>
                                     </div>
-                                    <p className="mb-2">{response.content}</p>
-                                    <button className="btn btn-sm btn-link text-primary p-0">
-                                      <FaRegHeart className="me-1" />
-                                      {response.likes}
-                                    </button>
                                   </div>
                                 </div>
                               </div>
-                            </div>
-                          ))}
+                            ))}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
-                </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="text-center text-muted py-5">
+                    <FaComment className="fs-1 mb-3 opacity-50" />
+                    <p>Soyez le premier à commenter cet article !</p>
+                  </div>
+                )}
               </div>
             </div>
           </div>

@@ -12,6 +12,9 @@ import Register from './components/Register';
 import NotFound from './components/NotFound';
 import Profile from './components/Profile';
 import Dashboard from './components/Dashboard';
+import About from './components/About';
+import Contact from './components/Contact';
+import Help from './components/Help';
 import { isAuthenticated } from './services/auth';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { ThemeProvider } from './contexts/ThemeContext';
@@ -66,6 +69,11 @@ const App = () => {
           <Route path="/actualites" element={<CategoryPage />}>
             <Route path=":category" element={<CategoryPage />} />
           </Route>
+          
+          {/* Routes supplémentaires */}
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/help" element={<Help />} />
           
           {/* Page 404 pour les routes non trouvées */}
           <Route path="*" element={<NotFound />} />
