@@ -14,7 +14,7 @@ const Navbar = () => {
   const { darkMode, toggleDarkMode } = useTheme();
 
   // État pour la gestion du menu mobile et de la recherche
-  const [showSearch, setShowSearch] = useState(false);
+  const [ setShowSearch] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [searchQuery, setSearchQuery] = useState(''); // Ajout d'un état pour la recherche

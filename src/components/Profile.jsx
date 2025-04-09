@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, {  } from 'react';
 // Import des icônes nécessaires
-import { FaUserEdit, FaMapMarkerAlt, FaLink, FaTrophy, FaMedal, FaStar } from 'react-icons/fa';
+import { FaUserEdit, FaMapMarkerAlt, FaLink } from 'react-icons/fa';
 import '../styles/Profile.css';
 
 /**

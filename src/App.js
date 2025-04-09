@@ -1,6 +1,6 @@
 // Import des dépendances nécessaires
 import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // Import des composants
 import Login from './components/Login';
 import Home from './components/Home';
@@ -17,7 +17,6 @@ import Contact from './components/Contact';
 import Help from './components/Help';
 import Chat from './components/Chat';
 import OnlineUsers from './components/OnlineUsers';
-import { isAuthenticated } from './services/auth';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { ThemeProvider } from './contexts/ThemeContext';
 
