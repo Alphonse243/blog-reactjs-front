@@ -13,18 +13,18 @@ const Footer = () => {
               Découvrez l'actualité et les dernières tendances à travers nos articles soigneusement sélectionnés.
             </p>
             <div className="d-flex gap-3 mt-4">
-              <a href="#" className="text-secondary hover-light fs-4">
+              <button className="text-secondary hover-light fs-4">
                 <FaFacebook />
-              </a>
-              <a href="#" className="text-secondary hover-light fs-4">
+              </button>
+              <button  className="text-secondary hover-light fs-4">
                 <FaTwitter />
-              </a>
-              <a href="#" className="text-secondary hover-light fs-4">
+              </button>
+              <button className="text-secondary hover-light fs-4">
                 <FaInstagram />
-              </a>
-              <a href="#" className="text-secondary hover-light fs-4">
+              </button>
+              <button className="text-secondary hover-light fs-4">
                 <FaLinkedin />
-              </a>
+              </button>
             </div>
           </div>
           

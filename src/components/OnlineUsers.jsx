@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaUsers, FaTimes, FaCircle } from 'react-icons/fa';
+import { FaUsers, FaTimes } from 'react-icons/fa';
 import '../styles/OnlineUsers.css';
 
 const OnlineUsers = () => {

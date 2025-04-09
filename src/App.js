@@ -35,9 +35,9 @@ const loadBootstrapScripts = () => {
  * Composant de route protégée
  * Vérifie si l'utilisateur est authentifié avant d'afficher le contenu
  */
-const ProtectedRoute = () => {
-  return isAuthenticated() ? <Outlet /> : <Navigate to="/login" />;
-};
+// const ProtectedRoute = () => {
+//   return isAuthenticated() ? <Outlet /> : <Navigate to="/login" />;
+// };
 
 /**
  * Composant principal de l'application

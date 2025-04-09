@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { FaUsers, FaNewspaper, FaCode, FaHeart } from 'react-icons/fa';
+import { FaUsers, FaNewspaper, FaCode } from 'react-icons/fa';
 import '../styles/animations.css';
 
 const About = () => {

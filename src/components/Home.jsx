@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaUser, FaRegClock, FaRegHeart, FaRegComment } from 'react-icons/fa';
 import '../styles/Home.css';
@@ -12,7 +12,7 @@ const Home = () => {
    * État local pour stocker les articles
    * Dans un cas réel, ces données viendraient d'une API
    */
-  const [posts, setPosts] = useState([
+  const [posts] = useState([
     {
       id: 1,
       title: "Les dernières avancées en Intelligence Artificielle",

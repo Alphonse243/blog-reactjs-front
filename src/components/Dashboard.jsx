@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Line, Bar, Doughnut } from 'react-chartjs-2';
+import { Line, Doughnut } from 'react-chartjs-2';
 import { 
-  FaUsers, FaNewspaper, FaComments, FaChartLine, FaEdit, FaTrash, 
-  FaEye, FaCog, FaBell, FaCalendar, FaRocket, FaChartPie, FaList,
+  FaUsers, FaNewspaper, FaComments, FaChartLine, FaBell, FaRocket, FaChartPie,
   FaUsersCog, FaTools, FaTachometerAlt
 } from 'react-icons/fa';
 import {
@@ -72,22 +71,22 @@ const Dashboard = () => {
   /**
    * Données pour le tableau des commentaires récents
    */
-  const recentComments = [
-    {
-      id: 1,
-      author: "Marie D.",
-      content: "Excellent article, très instructif !",
-      post: "Les tendances SEO",
-      date: "2024-01-16"
-    },
-    {
-      id: 2,
-      author: "Jean P.",
-      content: "Merci pour ces conseils.",
-      post: "Comment optimiser son référencement en 2024",
-      date: "2024-01-15"
-    }
-  ];
+  // const recentComments = [
+  //   {
+  //     id: 1,
+  //     author: "Marie D.",
+  //     content: "Excellent article, très instructif !",
+  //     post: "Les tendances SEO",
+  //     date: "2024-01-16"
+  //   },
+  //   {
+  //     id: 2,
+  //     author: "Jean P.",
+  //     content: "Merci pour ces conseils.",
+  //     post: "Comment optimiser son référencement en 2024",
+  //     date: "2024-01-15"
+  //   }
+  // ];
 
   // Configuration améliorée des graphiques
   const chartOptions = {

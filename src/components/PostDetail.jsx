@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { FaUser, FaRegClock, FaRegHeart, FaRegComment, FaShare, FaComment, FaReply } from 'react-icons/fa';
 import '../styles/PostDetail.css';
 
 const PostDetail = () => {
   const { id } = useParams();
-  const [post, setPost] = useState({
+  const [post] = useState({
     id: id,
     title: "Les dernières avancées en Intelligence Artificielle",
     content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -21,7 +21,7 @@ const PostDetail = () => {
     comments: []
   });
 
-  const [relatedPosts, setRelatedPosts] = useState([
+  const [relatedPosts] = useState([
     {
       id: 1,
       title: "Intelligence Artificielle et Santé",

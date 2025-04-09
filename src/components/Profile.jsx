@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 // Import des icônes nécessaires
-import { FaUserEdit, FaMapMarkerAlt, FaLink, FaRegHeart, FaRegComment, FaRegBookmark, FaTrophy, FaMedal, FaStar } from 'react-icons/fa';
+import { FaUserEdit, FaMapMarkerAlt, FaLink, FaTrophy, FaMedal, FaStar } from 'react-icons/fa';
 import '../styles/Profile.css';
 
 /**
@@ -9,48 +9,48 @@ import '../styles/Profile.css';
  */
 const Profile = () => {
   // État pour gérer l'onglet actif
-  const [activeTab, setActiveTab] = useState('posts');
+  // const [activeTab, setActiveTab] = useState('posts');
 
   // Données de démonstration pour les publications
-  const mockPosts = [
-    {
-      id: 1,
-      title: "L'avenir de l'Intelligence Artificielle",
-      image: "https://picsum.photos/id/1/600/400",
-      date: "20 Dec 2023",
-      likes: 45,
-      comments: 12
-    },
-    {
-      id: 2,
-      title: "Guide complet du développement web",
-      image: "https://picsum.photos/id/2/600/400",
-      date: "18 Dec 2023",
-      likes: 38,
-      comments: 8
-    },
-    {
-      id: 3,
-      title: "Les meilleures pratiques en cybersécurité",
-      image: "https://picsum.photos/id/3/600/400",
-      date: "15 Dec 2023",
-      likes: 52,
-      comments: 15
-    }
-  ];
+  // const mockPosts = [
+  //   {
+  //     id: 1,
+  //     title: "L'avenir de l'Intelligence Artificielle",
+  //     image: "https://picsum.photos/id/1/600/400",
+  //     date: "20 Dec 2023",
+  //     likes: 45,
+  //     comments: 12
+  //   },
+  //   {
+  //     id: 2,
+  //     title: "Guide complet du développement web",
+  //     image: "https://picsum.photos/id/2/600/400",
+  //     date: "18 Dec 2023",
+  //     likes: 38,
+  //     comments: 8
+  //   },
+  //   {
+  //     id: 3,
+  //     title: "Les meilleures pratiques en cybersécurité",
+  //     image: "https://picsum.photos/id/3/600/400",
+  //     date: "15 Dec 2023",
+  //     likes: 52,
+  //     comments: 15
+  //   }
+  // ];
 
   // Configuration des badges de réalisations
-  const achievements = [
-    { icon: <FaTrophy />, title: 'Top Contributeur', desc: '2023' },
-    { icon: <FaMedal />, title: 'Expert Vérifié', desc: '50+ articles' },
-    { icon: <FaStar />, title: 'Influence', desc: '1000+ followers' }
-  ];
+  // const achievements = [
+  //   { icon: <FaTrophy />, title: 'Top Contributeur', desc: '2023' },
+  //   { icon: <FaMedal />, title: 'Expert Vérifié', desc: '50+ articles' },
+  //   { icon: <FaStar />, title: 'Influence', desc: '1000+ followers' }
+  // ];
 
   // Liste des compétences de l'utilisateur
-  const skills = [
-    'JavaScript', 'React', 'Node.js', 'UX Design', 
-    'Python', 'Data Science', 'Machine Learning'
-  ];
+  // const skills = [
+  //   'JavaScript', 'React', 'Node.js', 'UX Design', 
+  //   'Python', 'Data Science', 'Machine Learning'
+  // ];
 
   return (
     <div className="profile-container">
