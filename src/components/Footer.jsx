@@ -10,7 +10,7 @@ const Footer = () => {
           <div className="col-lg-4 col-md-6">
             <h5 className="fw-bold mb-3">À propos</h5>
             <p className="text-secondary">
-              Découvrez l'actualité et les dernières tendances à travers nos articles soigneusement sélectionnés.
+              Découvrez l'actualité et les dernières tendances à  travers nos articles soigneusement sélectionnés.
             </p>
             <div className="d-flex gap-3 mt-4">
               <button className="text-secondary hover-light fs-4">
