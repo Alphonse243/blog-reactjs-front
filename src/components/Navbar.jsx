@@ -28,7 +28,9 @@ const Navbar = () => {
     { name: 'Actualités', path: '/actualites', icon: 'FaNewspaper' },
     { name: 'Recherche', path: '/search', icon: 'FaSearch' },
     { name: 'Contact', path: '/contact', icon: 'FaEnvelope' },
-    { name: 'À propos', path: '/about', icon: 'FaInfoCircle' }
+    { name: 'À propos', path: '/about', icon: 'FaInfoCircle' },
+    { name: 'Profile', path: '/profile', icon: 'FaUserCircle' },
+    { name: 'Admin', path: '/dashboard', icon: 'FaUserCircle' }
   ];
 
   const userMenuItems = [
@@ -83,7 +85,7 @@ const Navbar = () => {
         <div className="container d-flex justify-content-between align-items-center">
           <div className="d-flex align-items-center">
             <Link to="/" className="text-white text-decoration-none">
-              <h1 className="h4 m-0">MonBlog</h1>
+              <h1 className="h4 m-0">Blog en Reactjs</h1>
             </Link>
           </div>
           <div className="d-flex align-items-center gap-3">
