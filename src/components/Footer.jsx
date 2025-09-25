@@ -7,7 +7,7 @@ const Footer = () => {
     <footer className="bg-dark text-light py-5 mt-5">
       <div className="container">
         <div className="row gy-4">
-          <div className="col-lg-4 col-md-6">
+          <div className="col-lg-4 col-md-6 ">
             <h5 className="fw-bold mb-3">À propos</h5>
             <p className="text-secondary">
               Découvrez l'actualité et les dernières tendances à  travers nos articles soigneusement sélectionnés.
