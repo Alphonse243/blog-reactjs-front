@@ -24,7 +24,7 @@ const CategoryPage = () => {
   }, [category]);
 
   return (
-    <div className="bg-light">
+    <div className="bg-light ">
       <div className="bg-primary bg-gradient py-5 mb-4">
         <div className="container text-center text-white">
           <h1 className="display-4 mb-2">{category}</h1>
