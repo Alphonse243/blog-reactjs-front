@@ -265,7 +265,7 @@ const Home = () => {
                         <FaUser className="me-1" />
                         <span>{post.author}</span>
                       </div>
-                      <div className="d-flex align-items-center">
+                      <div className="d-flex align-items-center ">
                         <FaRegClock className="me-1" />
                         <span>{post.date}</span>
                       </div>
