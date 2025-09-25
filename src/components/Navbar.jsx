@@ -13,7 +13,7 @@ const Navbar = () => {
   const navigate = useNavigate(); // Initialisation du hook
   const { darkMode, toggleDarkMode } = useTheme();
 
-  // État pour la gestion du menu mobile et de la recherche
+  // État pour la gestion du menu mobile et de la recherche 
   const [ setShowSearch] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
