@@ -26,7 +26,7 @@ const Login = () => {
     const { name, value } = e.target; // Déstructuration de l'événement
     setCredentials(prev => ({
       ...prev,           // Spread operator pour conserver les valeurs existantes
-      [name]: value     // Mise à jour dynamique de la propriété
+      [name]: value     // Mise à jour dynamique de la propriété 
     }));
   };
 
