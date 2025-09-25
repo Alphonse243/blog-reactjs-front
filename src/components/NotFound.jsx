@@ -18,7 +18,7 @@ const NotFound = () => {
             Retour à l'accueil
           </Link>
           <button 
-            className="btn btn-outline-primary btn-lg"
+            className="btn btn-outline-primary  btn-lg"
             onClick={() => window.history.back()}
           >
             <FaSearch className="me-2" />
