@@ -24,7 +24,7 @@ const About = () => {
   }, []);
 
   return (
-    <div className="bg-light min-vh-100">
+    <div className="bg-light min-vh-100 ">
       {/* Hero Section */}
       <div className="bg-primary bg-gradient text-white py-5 mb-5">
         <div className="container text-center">
