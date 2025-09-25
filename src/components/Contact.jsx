@@ -17,7 +17,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="bg-light min-vh-100">
+    <div className="bg-light min-vh-100 ">
       <div className="bg-primary bg-gradient text-white py-5 mb-5">
         <div className="container text-center fade-in">
           <h1 className="display-4 fw-bold mb-3">Contactez-nous</h1>
