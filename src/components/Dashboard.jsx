@@ -224,7 +224,7 @@ const Dashboard = () => {
             </div>
 
             {/* Graphiques avec nouvelle disposition */}
-            <div className="row g-4 mb-4">
+            <div className="row g-4 mb-4 ">
               <div className="col-lg-8">
                 <div className="card border-0 shadow-sm h-100">
                   <div className="card-body">
