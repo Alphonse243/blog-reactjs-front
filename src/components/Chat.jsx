@@ -125,7 +125,7 @@ const Chat = () => {
         </div>
 
         {/* Zone de saisie et contrôles */}
-        <div className="chat-footer">
+        <div className="chat-footer ">
           <form onSubmit={handleSubmit} className="chat-form">
             <div className="chat-input-wrapper">
               {/* Menu des pièces jointes */}
