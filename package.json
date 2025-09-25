@@ -41,5 +41,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^9.36.0",
+    "rimraf": "^6.0.1",
+    "svgo": "^4.0.0"
   }
 }

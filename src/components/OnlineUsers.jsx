@@ -29,7 +29,8 @@ const OnlineUsers = () => {
           </button>
         </div>
 
-        <div className="online-users-body">
+
+        <div className="online-users-body ">
           {mockOnlineUsers.map(user => (
             <div key={user.id} className="online-user-item">
               <div className="user-avatar">
